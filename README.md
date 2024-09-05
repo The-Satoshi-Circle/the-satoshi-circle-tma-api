@@ -18,47 +18,73 @@ This repository contains the backend API for **The Satoshi Circle TMA** Telegram
 - **PHP** (optional, if not using Sail directly).
 - **Composer**: Dependency manager for PHP.
 
-### Installation
+### Installation (with Laravel Sail)
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/The-Satoshi-Circle/tma-api
-    cd tma-api
+    git clone git@github.com:The-Satoshi-Circle/the-satoshi-circle-tma-api.git
+    cd the-satoshi-circle-tma-api
     ```
 
 2. **Set up environment variables**:
     ```bash
-    cp .env.example .env
+    cp .env.sail .env
     ```
 
 3. **Edit the `.env` file**:
     - Configure your database and other necessary settings.
 
-4. **Install dependencies using Laravel Sail**:
+4. **Install dependencies with composer**:
     ```bash
-    ./vendor/bin/sail up -d
-    ./vendor/bin/sail composer install
+      composer install
+    ```
+   
+5. **Configure and run Laravel Sail**:
+    ```bash
+      php artisan sail:install
+      ./vendor/bin/sail up -d
     ```
 
-5. **Run database migrations**:
+6. **Run database migrations**:
     ```bash
     ./vendor/bin/sail artisan migrate
     ```
 
-6. **Run the application**:
-    ```bash
-    ./vendor/bin/sail up
-    ```
-
 Your API should now be running in the Docker environment provided by **Laravel Sail**.
 
-### Optional: Running without Sail
+### Installation (without Laravel Sail)
 
-If you prefer to run the project without Docker:
+If you prefer to run the project without Laravel Sail (and Docker):
 
-1. Ensure **PHP 8.0+**, **MySQL**, and **Composer** are installed locally.
-2. Follow steps 1-5 using `php` and `composer` commands instead of Sail.
+1. Ensure **PHP 8.1+**, **MySQL**, and **Composer** are installed locally.
+2. **Clone the repository**:
+    ```bash
+    git clone git@github.com:The-Satoshi-Circle/the-satoshi-circle-tma-api.git
+    cd the-satoshi-circle-tma-api
+    ```
 
+3. **Set up environment variables**:
+    ```bash
+    cp .env.example .env
+    ```
+
+4. **Edit the `.env` file**:
+    - Configure your database and other necessary settings.
+
+5. **Install dependencies with composer**:
+    ```bash
+      composer install
+    ```
+
+6. **Run database migrations**:
+    ```bash
+    php artisan migrate
+    ```
+
+7. **Serve your application**:
+    ```bash
+    php artisan serve
+    ```
 ## 🤝 Contributing
 
 Contributions are welcome! Fork the project, submit a pull request, or open an issue for any changes or improvements.
