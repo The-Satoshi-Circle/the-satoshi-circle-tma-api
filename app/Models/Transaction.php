@@ -23,9 +23,12 @@ class Transaction extends Model
 
     public const TYPES = [
         self::TYPE_DAILY_TAPS,
+        self::TYPE_TASK
     ];
 
     public const TYPE_DAILY_TAPS = 1;
+
+    public const TYPE_TASK = 2;
 
     public function user(): BelongsTo
     {

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\InitController;
 use App\Http\Controllers\Api\TapController;
+use App\Http\Controllers\Api\TasksController;
 use App\Http\Controllers\Api\TelegramMiniAppController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -13,4 +14,6 @@ Route::post('/telegram/register', [TelegramMiniAppController::class, 'register']
 
 Route::group(['middleware' => ['auth:sanctum']], static function () {
     Route::post('taps', TapController::class);
+    Route::get('tasks', [TasksController::class, 'index']);
+    Route::post('tasks/{task}', [TasksController::class, 'store']);
 });
