@@ -30,6 +30,8 @@ class Transaction extends Model
 
     public const TYPE_TASK = 2;
 
+    public const TYPE_SURVEY = 3;
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

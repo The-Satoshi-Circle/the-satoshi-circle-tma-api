@@ -58,6 +58,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Task::class, 'users_tasks');
     }
 
+    public function surveys(): BelongsToMany
+    {
+        return $this->belongsToMany(Survey::class, 'users_surveys')->using(UserSurvey::class);
+    }
+
     public function getDailyTapsAttribute(): int
     {
         return $this->transactions()
