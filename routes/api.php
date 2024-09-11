@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\InitController;
+use App\Http\Controllers\Api\MintController;
 use App\Http\Controllers\Api\SurveysController;
 use App\Http\Controllers\Api\TapController;
 use App\Http\Controllers\Api\TasksController;
@@ -20,4 +21,6 @@ Route::group(['middleware' => ['auth:sanctum']], static function () {
 
     Route::get('surveys', [SurveysController::class, 'index']);
     Route::post('surveys/{survey}', [SurveysController::class, 'store']);
+
+    Route::post('mint/{item}', MintController::class);
 });

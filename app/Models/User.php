@@ -60,7 +60,7 @@ class User extends Authenticatable
 
     public function surveys(): BelongsToMany
     {
-        return $this->belongsToMany(Survey::class, 'users_surveys')->using(UserSurvey::class);
+        return $this->belongsToMany(Survey::class, 'users_surveys')->using(UserSurvey::class)->withPivot(['data', 'nft_collection_item_id']);
     }
 
     public function getDailyTapsAttribute(): int

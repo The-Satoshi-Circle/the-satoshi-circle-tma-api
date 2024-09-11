@@ -14,10 +14,18 @@ class Survey extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $done = $request->user()->surveys()->where('survey_id', $this->id)->first();
+        $nftCollectionItem = null;
+
+        if ($done) {
+            $nftCollectionItem = $done->pivot->nftCollectionItem;
+        }
+
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'done' => $request->user()->surveys()->where('survey_id', $this->id)->exists(),
+            'done' => (bool) $done,
+            'nft_collection_item' => $nftCollectionItem,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
         ];
